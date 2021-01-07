@@ -14,9 +14,13 @@
         {{i18n 'discourse_subscriptions.navigation.payments'}}
       {{/link-to}}
     </li>
+    {{plugin-outlet name="subscriptions-billing-sidebar" }}
+
   {{/mobile-nav}}
 {{/d-section}}
 
 <section class='user-content'>
   {{outlet}}
 </section>
+{{plugin-outlet name="after-billing" }}
+{{plugin-outlet name="subscriptions-footer" }}

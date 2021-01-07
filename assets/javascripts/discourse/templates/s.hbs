@@ -1,12 +1,15 @@
-
-<div class="container">
-  <div class="title-wrapper">
-    <h1>
-      {{i18n 'discourse_subscriptions.subscribe.title'}}
-    </h1>
+{{plugin-outlet name="subscriptions-header" }}
+<div class="subscription">
+  <div class="container">
+    <div class="title-wrapper">
+    {{plugin-outlet name="before-subscription-title" connectorTagName="" tagName=""}}
+      <h1>
+        {{i18n 'discourse_subscriptions.subscribe.title'}}
+      </h1>
+    </div>
+    <hr>
+    {{outlet}}
+    {{plugin-outlet name="after-subscription-outlet" connectorTagName="" tagName=""}}
   </div>
-
-  <hr>
-
-  {{outlet}}
 </div>
+{{plugin-outlet name="subscriptions-footer" }}

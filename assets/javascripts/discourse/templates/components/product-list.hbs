@@ -8,18 +8,21 @@
       <p class="product-description">
         {{html-safe product.description}}
       </p>
+      {{plugin-outlet name="after-product-description" args=(hash model=model) connectorTagName="" tagName=""}}
 
       {{#if isLoggedIn}}
         <div class="product-purchase">
-          {{#if product.subscribed}}
+          {{#if product.subscribed_JP_disabled}}
             <span class="purchased">&#x2713; {{i18n 'discourse_subscriptions.subscribe.purchased'}}</span>
             {{#link-to "user.billing.subscriptions" currentUser.username class="billing-link"}}
               {{i18n 'discourse_subscriptions.subscribe.go_to_billing'}}
             {{/link-to}}
+            {{plugin-outlet name="after-go-to-billing" args=(hash product=product)}}
           {{else}}
-            {{#link-to "s.show" product.id disabled=product.subscribed class="btn btn-primary"}}
+            {{#link-to "s.show" product.id disabled=product.subscribed_JP_disabled class="btn btn-primary"}}
               {{i18n 'discourse_subscriptions.subscribe.title'}}
             {{/link-to}}
+            {{plugin-outlet name="after-subscribe-title" connectorTagName="" tagName=""}}
           {{/if}}
         </div>
       {{/if}}
